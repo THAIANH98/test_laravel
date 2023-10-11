@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('ten_sp');
             $table->string('donvi_sp');
             $table->string('gia_sp');
-            $table->string('ten_sp');
             $table->unsignedBigInteger('id_nhom');
             $table->foreign('id_nhom')
             ->references('id')
