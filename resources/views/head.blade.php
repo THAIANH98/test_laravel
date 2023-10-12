@@ -7,6 +7,7 @@
       href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 <!-- Font Awesome -->
 <link rel="stylesheet" href="/test_laravel/test_laravel/public/template/admin/plugins/fontawesome-free/css/all.min.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
