@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tbl__products', function (Blueprint $table) {
+        Schema::create('tbl_products', function (Blueprint $table) {
             $table->id();
             $table->string('ma_sp');
             $table->string('ten_sp');
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_nhom');
             $table->foreign('id_nhom')
             ->references('id')
-            ->on('tbl__categories')
+            ->on('tbl_categories')
             ->onDelete('cascade');
             $table->timestamps();
         });
