@@ -18,18 +18,19 @@ class LoginController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'email' => 'required|email:filter',
+            'name' => 'required',
             'password' => 'required'
         ]);
 
         if (Auth::attempt([
-                'email' => $request->input('email'),
-                'password' => $request->input('password')
-            ], $request->input('remember'))) {
+            'name' => $request->input('name'),
+            'password' => $request->input('password')
+        ], $request->input('remember'))) {
 
             return redirect()->route('product');
         }
 
-        Session::flash('error', 'Email hoặc Password không đúng');
+        Session::flash('error', 'User hoặc Password không đúng');
         return redirect()->back();
-    }}
+    }
+}
