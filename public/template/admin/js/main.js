@@ -31,5 +31,3 @@ function load_cate(url) {
         $('#id_nhom').html(res);
     });
 }
-
-
