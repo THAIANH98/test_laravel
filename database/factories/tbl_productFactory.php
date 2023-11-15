@@ -18,10 +18,10 @@ class tbl_productFactory extends Factory
     {
         return [
             'ten_sp' => fake()->name(),
-            'ma_sp' => fake()->name(),
+            'ma_sp' => fake()->iosMobileToken(),
             'donvi_sp' => fake()->name(),
-            'gia_sp' => rand(100000000,500000000),
-            'id_nhom' => rand(1,5),
+            'gia_sp' => rand(100000000, 500000000),
+            'id_nhom' => rand(1, 5),
         ];
     }
 }

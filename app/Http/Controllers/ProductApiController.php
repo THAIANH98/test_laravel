@@ -84,6 +84,8 @@ class ProductApiController extends Controller
         return response()->json([
             'err' => false,
             'data' => $product,
+            'url_update' => route('productapi_update', $product->id),
+            'url_load' => route('productapi_view', $product->id_nhom),
         ]);
     }
 
