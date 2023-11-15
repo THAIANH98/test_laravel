@@ -53,22 +53,9 @@
     <div class="container">
         <div class="container mt-3">
             <h2>Danh sản phẩm</h2>
-            <table class="table table-bordered" id='table_sp'>
-                <thead>
-                    <tr>
-                        <th>Nhóm</th>
-                        <th>Mã Sản Phẩm</th>
-                        <th>Sản phẩm</th>
-                        <th>Đơn vị tính</th>
-                        <th>Giá</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody id="list_product">
+            <div id="list_product">
 
-                </tbody>
-            </table>
+            </div>
         </div>
     </div>
 </body>
@@ -116,7 +103,7 @@
             $('#donvi_sp').val('');
             $('#gia_sp').val('');
             $('#id_nhom').val(0);
-            load_products('{{ route('productapi_view', 'id_nhom') }}', 0);
+            // load_products('{{ route('productapi_view', 'id_nhom') }}', 0);
             $('#group-edit').css("display", "none");
             $('#group-add').css("display", "block");
         });
@@ -160,6 +147,29 @@
                 }
             })
         }
+
+        function getProduct(url) {
+            console.log(url);
+            $.ajax({
+                url: String(url),
+                type: 'GET',
+            }).done(function(data) {
+                $('#list_product').html(data);
+            }).fail(function() {
+                console.log('Error load page');
+            });
+        }
+
+        $(document).on('click', ".pagination a", function(e) {
+            e.preventDefault();
+
+            $('li').removeClass('active');
+            $(this).parent('li').addClass('active');
+
+            var url = $(this).attr('href');
+
+            getProduct(url);
+        });
     </script>
 @endsection
 @include('footer')

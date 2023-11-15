@@ -10,9 +10,11 @@ use Illuminate\Support\Facades\Validator;
 
 class ProductApiController extends Controller
 {
+    protected $limit = 5;
+
     public function index()
     {
-        $products = tbl_product::all();
+        $products = tbl_product::paginate($this->limit);
         $arr = [
             'status' => true,
             'message' => "Danh sách nhóm sản phẩm",
@@ -21,12 +23,13 @@ class ProductApiController extends Controller
         return response()->json($arr, 200);
     }
 
-    public function productapi_view(string $id_nhom)
+    public function productapi_view(Request $request, string $id_nhom)
     {
+        // dd($request->page);
         if ($id_nhom == '0')
-            $products = ProductResource::collection(tbl_product::orderBy('id', 'Desc')->get());
+            $products = ProductResource::collection(tbl_product::orderBy('id', 'Desc')->paginate($this->limit));
         else
-            $products = ProductResource::collection(tbl_product::where('id_nhom', $id_nhom)->orderBy('id', 'Desc')->get());
+            $products = ProductResource::collection(tbl_product::where('id_nhom', $id_nhom)->orderBy('id', 'Desc')->paginate($this->limit));
         return view('product.list', compact('products'));
     }
 
