@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class ProductFactoriesFactory extends Factory
+class tbl_productFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,9 +18,10 @@ class ProductFactoriesFactory extends Factory
     {
         return [
             'ten_sp' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),        ];
+            'ma_sp' => fake()->name(),
+            'donvi_sp' => fake()->name(),
+            'gia_sp' => rand(100000000,500000000),
+            'id_nhom' => rand(1,5),
+        ];
     }
 }
